@@ -1,0 +1,60 @@
+Evaluación Individual María Alejandra Canache V.
+Fecha:04/03/2020
+************************************************
+Parte I
+************************************************
+TABLAS
+
+empleado (idEmpleado, nombreEmpleado, fechaIngreso)
+servicio (idServicio, nombreServicio, valorServicio)
+vehiculo (idVehiculo, marcaVehiculo, modeloVehiculo)
+prestación_servicio (idPrestacionServicio, IdServicio, idEmpleado, idVehiculo, fecha)
+*************************************************
+cONSULTAS
+*************************************************
+a.- Mostrar la cantidad de prestaciones de servicios ejecutados entre el 01 de octubre y el 26 de
+noviembre del 2018.
+
+SELECT COUNT(id_prestacionServicio) AS Total Prestaciones
+FROM prestación_servicio
+WHERE fecha BETWEEN  '01/10/2018' AND '25/11/2018'
+
+
+b.- Mostrar la cantidad total de prestaciones realizadas agrupadas por idVehiculo.
+
+SELECT id_vehiculo,COUNT(idPrestacionServicio) 
+FROM prestación_servicio
+GROUP BY id_vehiculo
+
+
+c.- Mostrar los vehículos con la menor cantidad de prestaciones de servicios realizados.
+
+SELECT id_vehiculo,COUNT(1)
+FROM prestación_servicio
+GROUP BY id_vehiculo
+HAVING COUNT(1)=(SELECT MIN(COUNT(1))
+                 FROM prestación_servicio
+                 GROUP BY id_vehiculo
+
+
+************************************************
+PARTE II
+************************************************
+2.- Crear con DDL una tabla empleado 
+
+CREATE TABLE `empleado`(
+id_Empleado INT(5) NOT NULL,
+nombre VARCHAR(25)NOT NULL,
+apellido  VARCHAR(25) NOT NULL,
+dirección VARCHAR(50) NOT NULL,
+teléfono INT(9) NOT NULL,
+id_Departamento INT(5) NOT NULL)
+
+********************************************
+PARTE III
+********************************************
+SQL
+
+
+
+
